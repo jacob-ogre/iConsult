@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <h2>New consultation</h2>
+    <p> {{ form.name.errors }} </p>
+  </div>
+  <form method="POST" class="post-form">{% csrf_token %} 
+    {{ form.as_p }}
+<!--     <div class="col-md-6">
+      <p>
+      <label for="title">Title</label>
+        {{ form.title }}
+      </p>
+      <p>
+      <label for="location">Location</label>
+        {{ form.location }}
+      </p>
+      <p>
+      <label for="area">Area</label>
+        {{ form.area }}
+      <label for="area_unit">Area Units</label>
+        {{ form.area_unit }}
+      </p>
+      <p><label for="owner">Owner</label>
+        {{ form.owner }}
+      </p>
+      <br>
+    </div>
+    <div class="col-md-6">
+      <p>
+      <label for="summary">Project Summary</label> 
+      {{ form.summary }}
+      </p>
+      <br>
+    </div>
+ -->  
+    <hr>
+    <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+    <button class="btn btn-default"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancel</button>
+  </form>
+</div>
+
+{% endblock %}

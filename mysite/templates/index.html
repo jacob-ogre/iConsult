@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% load static %}
+  <div id='intropara' style="background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0)), url(' {% static "mysite/img/IMG_3757.jpg" %}'); width:150%; margin-left:-20%; margin-top:-10%; min-height:250px; color: white" >
+  
+    <div class="row" style="padding-top:7%; padding-left:13%">
+      <div class="col-md-12">
+        <h1>Welcome to <strong>iConsult</strong>!</h1>
+      </div>
+    </div>
+
+    <div class="row" style="padding-left: 13%; padding-bottom:7%">
+      <div class="col-md-6">
+        <p style="font-weight:600">This is a toy web application to explore how publicly available section 7 consultations can improve Endangered Species Act (ESA) implementation through information sharing, open peer review, and compliance monitoring.</p>
+        <p style="font-weight:600"> This is not official in any way, shape, or form. </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Section 7</h2>
+      <p>Section 7 of the ESA directs federal agencies to use their authorities to help conserve threatened species and endangered species. One way agencies do that is by consulting with the U.S. Fish and Wildlife Service (FWS) and/or the National Marine Fisheries Service (NMFS) to ensure the agency's actions &mdash; which include actions they permit, fund, or undertake &mdash; do not threaten a species survival or destroy critical habitat.</p>
+
+      <p>Many conservationists consider section 7 to be the strongest component of the ESA because of its broad scope. Because of its importance, we want to ensure the process is as effective and efficient as possible to offer maximum protection to ESA-listed species.</p>
+    </div>
+
+    <div class="col-md-6">
+      <h2>Opportunity</h2>
+      <p>FWS and NMFS evaluate over 10,000 section 7 consultations each year. That means there over 10,000 opportunities for the Services, other federal agencies, their permittees, and conservationists to learn how to make better decisions for conserving ESA-listed species each year. Some 10,000 opportunities to reduce everyone's work load by sharing content. And as many opportunites to help ensure everyone is complying with the terms of their permits.</p>
+
+      <p>These opportunities can be best realized if the entire community shares their knowledge. iConsult is a tool (an exploratory tool!) for this sharing.</p>
+    </div>
+  </div>
+  <hr>
+  <div class="row" style="min-height: 400px;">
+    <div class="col-md-6">
+    <p>Add image...</p>
+    </div>
+    <div class="col-md-6">
+      <h2>Get started</h2>
+      <p>To get started, browse and search consultations <a href="/Consultations/">in general</a>, <a href="/Species/">by species</a>, and so-forth. If you or your organization &mdash; such as an agency or business &mdash; have consulted with FWS or NMFS on a project, <a href="/Signup">create an iConsult account</a> and add data and documentation. (Make sure you have permission!)</p> 
+    </div>
+  </div>
+  <hr>
+{% endblock %}
+    

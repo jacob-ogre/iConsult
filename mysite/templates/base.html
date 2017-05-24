@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}iConsult{% endblock %}</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static "mysite/jquery-2.2.4.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "mysite/bootstrap/js/bootstrap.js" %}"></script>
+    <link rel="stylesheet" href="{% static "mysite/bootstrap/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "mysite/font-awesome-4.7.0/css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "mysite/icons_style.css" %}">
+  </head>
+  <body>
+    <header>
+      {% if user.is_authenticated %}
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" tabindex="-1" href="{% url 'index' %}">iConsult</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'consults' %}">Consultations</a>
+                </li>
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'species' %}">Species</a>
+                </li>
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'places' %}">Places</a>
+                </li>
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'people' %}">People</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'about' %}">About</a>
+                </li>
+                <li class="dropdown">
+                  <a href="./edit" class="dropdown-toggle" data-toggle="dropdown" tabindex="-1" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span style="font-size:1.1em; font-weight: 600; color:white">{{ user.username }} <i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a href="/People/{{ user.id }}/">Profile</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'logout' %}">Logout</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      {% else %}
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" tabindex="-1" href="{% url 'index' %}">iConsult</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+              <ul class="nav navbar-nav">
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'consults' %}">Consultations</a>
+                </li>
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'species' %}">Species</a>
+                </li>
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'places' %}">Places</a>
+                </li>
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'people' %}">People</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a style="font-weight: 400; font-size: larger" <a href = "{% url 'about' %}">About</a>
+                </li>
+                <li>
+                  <a href="{% url 'login' %}">Log in</a>
+                </li>
+                <li>
+                  <a href="{% url 'signup' %}">Sign up</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      {% endif %}
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>

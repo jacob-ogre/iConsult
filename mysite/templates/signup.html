@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Join iConsult!</h2>
+      <p>A demo web application for ESA section 7 consultations. Ain't nothing
+        official here.</p>
+    </div>
+    <div class="col-md-8">
+      <div class="login-signup">
+        <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <p>
+              {{ field.label_tag }}<br>
+              {{ field }}
+              {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+              {% endif %}
+              {% for error in field.errors %}
+                <p style="color: red; font-weight: 800">{{ error }}</p>
+              {% endfor %}
+            </p>
+          {% endfor %}
+          <button type="submit" class="btn btn-default">Sign up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

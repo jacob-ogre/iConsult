@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Consultations</h1>
+    </div>
+    <div class="col-md-6">
+      {% if user.is_authenticated %}
+        <form method="GET" action="/Consultations/new/">
+          <button style="float: right; margin-top: 24px" type="submit" class="btn btn-primary">New Consultation</button>
+        </form>
+      {% else %}
+        <p></p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="blank_divider"></div>
+  {% for con in cons %}
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">{{ con.title }}</div>
+        <div class="panel-body">
+          <p>
+          <label for="location">Location:</label>
+            {{ con.location }}
+          </p>
+          <p>
+          <label for="species">Species:</label>
+            {{ con.species }}
+          </p>
+          <label for="area">Area:</label>
+            {{ con.area }} {{ con.area_unit }}
+          </p>
+          <p style="float:right">
+            <a href="/Consultations/{{ con.pk }}/">View</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+{% endblock %}

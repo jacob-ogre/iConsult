@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-12">
+      <h1>People of iConsult</h1>
+    </div>
+  </div>
+  <div class="blank_divider"></div>
+  {% for person in peeps %}
+    <div class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><a href="/People/{{ person.pk }}/">{{ person.username }}</a></div>
+        <div class="panel-body">
+          <hr>
+          <p><label>Bio:</label> {{ person.bio }}</p>
+          <p><label>Website:</label> <a href="{{ person.website }}">{{ person.website }}</a></p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="flow-text">Update your information</h2>
+      </div>
+      <div class="panel-body">
+      <form action="." method="POST" class="padding" enctype="multipart/form-data">
+        {% csrf_token %} {{ noodle_form.as_p }}
+        <div class="divider"></div>
+        {{ formset.management_form }}
+            {{ formset.as_p }}
+        <hr>
+        <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+        <button class="btn btn-default"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancel</button>
+      </form>
+      <br>
+  </div>
+  <div class="col-md-3">
+      <p></p>
+  </div>
+</div>
+
+{% endblock %}

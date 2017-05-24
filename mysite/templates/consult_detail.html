@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+      <div class="col-md-9">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="flow-text">{{ consult.title }}</h2>
+          </div>
+          <div class="panel-body">
+            <label>Summary</label><p>{{ consult.summary }}</p>
+            <label>Location</label><p>{{ consult.location }}</p>
+            <label>Species</label><p>{{ consult.species }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
