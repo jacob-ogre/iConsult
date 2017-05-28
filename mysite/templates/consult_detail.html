@@ -1,19 +1,110 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="row">
+{% load markdown_filter %}
+
+  <h1 class="regular-text"> {{ consult.title }} </h1>
+  <div id="display"> 
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active">
+        <a href="#1" data-toggle="tab">Overview</a>
+      </li>
+      <li><a href="#2" data-toggle="tab">Location</a></li>
+      <li><a href="#3" data-toggle="tab">Species</a></li>
+      <li><a href="#4" data-toggle="tab">Area</a></li>
+      <li><a href="#5" data-toggle="tab">Metadata</a></li>
+    </ul>
+
+    <!-- CONTENTS -->
+    <div class="tab-content">
+
+      <! TAB 1 >
+      <div role="tabpanel" class="tab-pane active" id="1">
+        <div class="col-md-12">
+          <p>
+            <span style="font-weight: 600">Title</span> {{ consult.title }}
+          </p>
+          <p>
+            <span style="font-weight: 600">Project Summary</span> {{ consult.summary|markdownify|safe }}
+            <br>
+            <div class="row">
+              <br>{{ consult.media }}
+            </div>
+          </p>
+        </div>
+      </div>
+
+      <! TAB 2 >
+      <div class="tab-pane" id="2">
+        <div class="col-md-12">
+          <p>
+            <span style="font-weight: 600">Location</span> {{ consult.location }}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            <span style="font-weight: 600">Lat.</span> {{ consult.lat }}
+            <br>
+            <span style="font-weight: 600">Lat.</span> {{ consult.long }}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            <span style="font-weight: 600">Datum</span> {{ consult.datum }}
+          </p>
+        </div>
+      </div>
+
+      <! TAB 3 >
+      <div class="tab-pane" id="3">
+        <p>
+          <span style="font-weight: 600">Species</span> {{ consult.species }}
+        </p>
+      </div>
+
+      <! TAB 4 >
+      <div class="tab-pane" id="4">
+        <div class="col-md-6">
+          <p>
+            <span style="font-weight: 600">Area</span> {{ consult.area }}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p>
+            <span style="font-weight: 600">(Units)</span> {{ consult.area_unit }}
+          </p>
+        </div>
+      </div>
+      <div class="tab-pane" id="5">
+        <p>
+          <span style="font-weight: 600">Owner</span> {{ consult.owner }}
+        </p>
+        <p>
+          <span style="font-weight: 600">Date Created</span> {{ consult.date_created }}
+        </p>
+        <p>
+          <span style="font-weight: 600">Date Modified</span> {{ consult.date_modified }}
+        </p>
+      </div>
+      <div class="row"><br></div>
+    </div>
+  </div>
+
+
+
+<!--     <div class="row">
       <div class="col-md-9">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h2 class="flow-text">{{ consult.title }}</h2>
           </div>
           <div class="panel-body">
-            <label>Summary</label><p>{{ consult.summary }}</p>
+            <label>Summary</label><p>{{ consult.summary|markdownify|safe }}</p>
             <label>Location</label><p>{{ consult.location }}</p>
             <label>Species</label><p>{{ consult.species }}</p>
           </div>
         </div>
       </div>
     </div>
-
+ -->
 {% endblock %}

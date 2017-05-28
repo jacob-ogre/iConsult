@@ -4,6 +4,9 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from django_markdown.fields import MarkdownFormField
+from django_markdown.widgets import MarkdownWidget
+
 from .models import Consultation
 
 class SignUpForm(UserCreationForm):
@@ -37,8 +40,10 @@ class ConsultForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(attrs={"placeholder": "Descriptive is better"}),
             "location": forms.TextInput(attrs={"placeholder": "Placenames, Township/Sect/Range,etc"}),
-            "summary": forms.Textarea(attrs={"placeholder": "The action, anticipated effects, etc., in prose"}),
             "species": forms.TextInput(attrs={"placeholder": "Semicolon-separated list"}),
             "area_unit": forms.TextInput(attrs={"placeholder": "e.g., acres"}),
             "lat": forms.TextInput(attrs={"placeholder": "decimal degrees"}),
+            "long": forms.TextInput(attrs={"placeholder": "decimal degrees"}),
         }
+
+

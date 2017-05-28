@@ -34,7 +34,7 @@ def edit_user(request, pk):
                     instance=created_user)
 
                 if formset.is_valid():
-                    print "request.FILES.keys(): " + "; ".join(request.FILES.keys())
+                    # print "request.FILES.keys(): " + "; ".join(request.FILES.keys())
                     handle_uploaded_file(request.FILES['file'], fname="a_file.jpg")
                     created_user.save()
                     formset.save()
@@ -57,6 +57,7 @@ def consult_new(request):
             cons = form.save(commit=False)
             cons.owner = request.user
             cons.date_created = timezone.now()
+            cons.date_modified = timezone.now()
             cons.save()
             return redirect('consult_detail', pk=cons.pk)
         else:
@@ -68,17 +69,19 @@ def consult_new(request):
 @login_required
 def consult_edit(request, pk):
     cons = get_object_or_404(Consultation, pk=pk)
+    title = cons.title
     if request.method == 'POST':
         form = ConsultForm(request.POST, instance=cons)
+        print(form.errors)
         if form.is_valid():
             cons = form.save(commit=False)
             cons.owner = request.user
-            cons.date_created = timezone.now()
+            cons.date_modified = timezone.now()
             cons.save()
             return redirect('consult_detail', pk=cons.pk)
     else:
         form = ConsultForm(instance=cons)
-    return render(request, 'consult_edit.html', {'form': form})
+    return render(request, 'consult_edit_tab.html', {'form': form, 'title': title})
 
 ###################################
 # Pages that do not require login:

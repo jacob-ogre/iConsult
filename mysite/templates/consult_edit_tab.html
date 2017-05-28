@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="regular-text">Editing "{{ title.title }}"</h1>
+
+    <form method="POST" class="post-form">{% csrf_token %} 
+      <div id="exTab2"> 
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="active">
+            <a href="#1" data-toggle="tab">Overview</a>
+          </li>
+          <li><a href="#2" data-toggle="tab">Location</a></li>
+          <li><a href="#3" data-toggle="tab">Species</a></li>
+          <li><a href="#4" data-toggle="tab">Area</a></li>
+          <li><a href="#5" data-toggle="tab">Metadata</a></li>
+        </ul>
+
+        <!-- CONTENTS -->
+        <div class="tab-content">
+
+          <! TAB 1 >
+          <div role="tabpanel" class="tab-pane active" id="1">
+            <div class="col-md-12">
+              <p>
+                <span style="font-weight: 600">Title</span> {{ form.title }}
+              </p>
+              <p>
+                <span style="font-weight: 600">Project Summary</span> {{ form.summary }}
+                <br>
+                <div class="row">
+                  <br>{{ form.media }}
+                </div>
+              </p>
+            </div>
+          </div>
+
+          <! TAB 2 >
+          <div class="tab-pane" id="2">
+            <div class="col-md-12">
+              <p>
+                <span style="font-weight: 600">Location</span> {{ form.location }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p>
+                <span style="font-weight: 600">Lat.</span> {{ form.lat }}
+                <br>
+                <span style="font-weight: 600">Lat.</span> {{ form.long }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p>
+                <span style="font-weight: 600">Datum</span> {{ form.datum }}
+              </p>
+            </div>
+          </div>
+
+          <! TAB 3 >
+          <div class="tab-pane" id="3">
+            <p>
+              <span style="font-weight: 600">Species</span> {{ form.species }}
+            </p>
+          </div>
+
+          <! TAB 4 >
+          <div class="tab-pane" id="4">
+            <div class="col-md-6">
+              <p>
+                <span style="font-weight: 600">Area</span> {{ form.area }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p>
+                <span style="font-weight: 600">(Units)</span> {{ form.area_unit }}
+              </p>
+            </div>
+          </div>
+          <div class="tab-pane" id="5">
+            <p>
+              <span style="font-weight: 600">Owner</span> {{ form.owner }}
+            </p>
+            <p>
+              <span style="font-weight: 600">Date Created</span> {{ form.date_created }}
+            </p>
+            <p>
+              <span style="font-weight: 600">Date Modified</span> {{ form.date_modified }}
+            </p>
+          </div>
+          <div class="row"><br></div>
+          <div class="row" style="margin-left: 0">
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+              <button class="btn btn-default"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <br>
+
+{% endblock %}

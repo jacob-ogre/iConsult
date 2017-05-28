@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+from datetime import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'mysite.core',
+    'markdownx',
     # 'consultbasic'
 ]
 
@@ -115,3 +117,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'index'
+
+
+# MARKDOWNX INTEGRATION
+MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
+MARKDOWNX_UPLOAD_CONTENT_TYPES = ['image/jpeg', 'image/png', 'image/svg+xml', 
+    'image/gif']
+MARKDOWNX_SVG_JAVASCRIPT_PROTECTION = True

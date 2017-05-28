@@ -4,43 +4,78 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h2>New consultation</h2>
-    <p> {{ form.name.errors }} </p>
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <form method="POST" class="post-form">{% csrf_token %} 
+          <h3>Title: {{ form.title }}</h3>
+          <p style="color:red"> {{ form.error }}</p>
+        </div>
+        <div class="panel-body">
+          <div class="col-md-6">
+            <p>
+              <span style="font-weight: 600">Location</span> {{ form.location }}
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: 600">Lat.</span> {{ form.lat }}
+                <span style="font-weight: 600">Lat.</span> {{ form.long }}
+              </div>
+              <div class="col-md-6">
+                <span style="font-weight: 600">Datum</span> {{ form.datum }}
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: 600">Area</span> {{ form.area }}
+              </div>
+              <div class="col-md-6">
+                <span style="font-weight: 600">Area Units</span> {{ form.area_unit }}
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <span style="font-weight: 600">Species</span> {{ form.species }}
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12">
+                <span style="font-weight: 600">Owner</span> {{ form.owner }}
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: 600">Date Created</span> {{ form.date_created }}
+              </div>
+              <div class="col-md-6">
+                <span style="font-weight: 600">Date Modified</span> {{ form.date_modified }}
+              </div>
+            </div>
+            <br>
+          </div>
+          <div class="col-md-6">
+            <p>
+              <span style="font-weight: 600">Project Summary</span> {{ form.summary }}
+            </p>
+          </div>
+          <div class="row">
+          <br>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
+              <button class="btn btn-default"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancel</button>
+            </div>
+          </div>
+        </form>
+        {{ form.media }}
+        <br>
+      </div>
+    </div>
   </div>
-  <form method="POST" class="post-form">{% csrf_token %} 
-    {{ form.as_p }}
-<!--     <div class="col-md-6">
-      <p>
-      <label for="title">Title</label>
-        {{ form.title }}
-      </p>
-      <p>
-      <label for="location">Location</label>
-        {{ form.location }}
-      </p>
-      <p>
-      <label for="area">Area</label>
-        {{ form.area }}
-      <label for="area_unit">Area Units</label>
-        {{ form.area_unit }}
-      </p>
-      <p><label for="owner">Owner</label>
-        {{ form.owner }}
-      </p>
-      <br>
-    </div>
-    <div class="col-md-6">
-      <p>
-      <label for="summary">Project Summary</label> 
-      {{ form.summary }}
-      </p>
-      <br>
-    </div>
- -->  
-    <hr>
-    <button type="submit" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save</button>
-    <button class="btn btn-default"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp;Cancel</button>
-  </form>
 </div>
 
 {% endblock %}
