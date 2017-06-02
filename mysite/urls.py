@@ -1,5 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from mysite.core import views as core_views
 
@@ -20,5 +22,9 @@ urlpatterns = [
     url(r'^Login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^Logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
     url(r'^Signup/$', core_views.signup, name='signup'),
-    url('^markdownx/', include( 'markdownx.urls')),
+    url(r'^markdownx/', include('markdownx.urls')),
+    # url(r'^draceditor/', include('draceditor.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

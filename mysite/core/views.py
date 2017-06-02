@@ -8,6 +8,12 @@ from .models import Profile, Consultation
 from .forms import UserForm, ConsultForm, UploadFileForm
 from .utils import handle_uploaded_file
 
+# Multiupload
+from django.views.generic.edit import FormView
+from .forms import UploadForm
+from .models import Attachment
+
+# user edit
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
 from django.utils import timezone
@@ -78,6 +84,8 @@ def consult_edit(request, pk):
             cons.owner = request.user
             cons.date_modified = timezone.now()
             cons.save()
+            return redirect('consult_detail', pk=cons.pk)
+        else:
             return redirect('consult_detail', pk=cons.pk)
     else:
         form = ConsultForm(instance=cons)

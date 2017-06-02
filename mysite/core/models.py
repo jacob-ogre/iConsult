@@ -25,6 +25,9 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+class Attachment(models.Model):
+    file = models.FileField(upload_to='attachments')
+
 # A basic model to hold fields for a consultation record:
 class Consultation(models.Model):
     title = models.CharField(max_length=150, default="", blank=False)
@@ -36,6 +39,8 @@ class Consultation(models.Model):
     area = models.FloatField(blank=False)
     area_unit = models.CharField(max_length=30, default="", blank=False)
     species = models.CharField(max_length=1000, default="", blank=True)
+    
+    # METADATA
     owner = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     date_created = models.DateTimeField(default=timezone.now)
     date_modified = models.DateTimeField(blank=True, null=True)

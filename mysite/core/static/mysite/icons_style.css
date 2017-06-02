@@ -429,8 +429,11 @@ NAVIGATION TABS
 }
 
 .nav-tabs > li > a:hover {
-  color: #212121;
-  font-weight: 800;
+  color: black;
+  font-weight: 500;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background-color: white;
 }
 
 @media (min-width: 998px) {

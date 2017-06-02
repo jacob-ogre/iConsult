@@ -4,8 +4,10 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from django_markdown.fields import MarkdownFormField
-from django_markdown.widgets import MarkdownWidget
+from multiupload.fields import MultiFileField
+
+# from django_markdown.fields import MarkdownFormField
+# from django_markdown.widgets import MarkdownWidget
 
 from .models import Consultation
 
@@ -34,6 +36,13 @@ class ConsultForm(forms.ModelForm):
             ("WGS84", "WGS84"),
         )
         datum = forms.ChoiceField(choices=DATUM_OPTS)    
+
+        attachments = MultiFileField(
+            min_num=0, 
+            max_num=3, 
+            max_file_size=1024*1024*5
+        )
+
         fields = ("title", "summary", "location", "lat", "long", "datum",
             "species", "area", "area_unit", "owner", "date_created", 
             "date_modified")
