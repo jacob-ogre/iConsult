@@ -30,7 +30,8 @@
         <li><a href="#2" data-toggle="tab">Location</a></li>
         <li><a href="#3" data-toggle="tab">Species</a></li>
         <li><a href="#4" data-toggle="tab">Area</a></li>
-        <li><a href="#5" data-toggle="tab">Metadata</a></li>
+        <li><a href="#5" data-toggle="tab">Attachments</a></li>
+        <li><a href="#6" data-toggle="tab">Metadata</a></li>
       </ul>
 
       <!-- CONTENTS -->
@@ -96,8 +97,17 @@
           </div>
         </div>
 
-        <! TAB 5 >
-        <div class="tab-pane" id="5">
+          <! TAB 5 >
+          <div class="tab-pane" id="5">
+            <div class="col-md-12">
+              <p>
+                <span style="font-weight: 600">Biological Opinion</span> {{ consult.biop }}
+              </p>
+            </div>
+          </div>
+
+        <! TAB 6 >
+        <div class="tab-pane" id="6">
           <div class="col-md-12">
             <p>
               <span style="font-weight: 600">Owner</span> {{ consult.owner }}

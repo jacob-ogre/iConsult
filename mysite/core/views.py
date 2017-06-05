@@ -8,10 +8,12 @@ from .models import Profile, Consultation
 from .forms import UserForm, ConsultForm, UploadFileForm
 from .utils import handle_uploaded_file
 
-# Multiupload
-from django.views.generic.edit import FormView
-from .forms import UploadForm
-from .models import Attachment
+from django.core.files.storage import FileSystemStorage
+
+# # Multiupload
+# from django.views.generic.edit import FormView
+# from .forms import UploadForm
+# from .models import Attachment
 
 # user edit
 from django.forms.models import inlineformset_factory
@@ -36,7 +38,7 @@ def edit_user(request, pk):
 
             if user_form.is_valid():
                 created_user = user_form.save(commit=False)
-                formset = ProfileInlineFormset(request.POST, request.FILES, 
+                formset = ProfileInlineFormset(request.POST, request.FILES,
                     instance=created_user)
 
                 if formset.is_valid():
@@ -58,7 +60,7 @@ def edit_user(request, pk):
 @login_required
 def consult_new(request):
     if request.method == 'POST':
-        form = ConsultForm(request.POST)
+        form = ConsultForm(request.POST, request.FILES)
         if form.is_valid():
             cons = form.save(commit=False)
             cons.owner = request.user
@@ -77,8 +79,9 @@ def consult_edit(request, pk):
     cons = get_object_or_404(Consultation, pk=pk)
     title = cons.title
     if request.method == 'POST':
-        form = ConsultForm(request.POST, instance=cons)
+        form = ConsultForm(request.POST, request.FILES, instance=cons)
         print(form.errors)
+        # print(form.files)
         if form.is_valid():
             cons = form.save(commit=False)
             cons.owner = request.user

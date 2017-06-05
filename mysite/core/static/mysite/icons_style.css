@@ -65,6 +65,15 @@ label {
   font-size: 1.05em;
 }
 
+td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+table {
+  margin-bottom: 5px;
+}
+
 .tab-content {
   padding: 20px 10px;
   background: white;
@@ -535,4 +544,14 @@ NAVIGATION TABS
 .regular-text {
   clear: both;
   font-weight: 800;
+}
+
+.format-bar {
+  background-color: #E0E0E0;
+  border-radius: 2px;
+  border: 1px solid #757575;
+  font-size: smaller;
+  color: #616161;
+  margin-top: 3px;
+  padding: 3px;
 }

@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^Logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
     url(r'^Signup/$', core_views.signup, name='signup'),
     url(r'^markdownx/', include('markdownx.urls')),
+    url(r'^uploads/form/$', core_views.consult_new, name='model_form_upload'),
     # url(r'^draceditor/', include('draceditor.urls')),
 ]
 

@@ -4,7 +4,9 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from multiupload.fields import MultiFileField
+# from uploads.core.models import Document
+
+# from multiupload.fields import MultiFileField
 
 # from django_markdown.fields import MarkdownFormField
 # from django_markdown.widgets import MarkdownWidget
@@ -12,7 +14,10 @@ from multiupload.fields import MultiFileField
 from .models import Consultation
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, help_text='Required. Provide a valid email address.')
+    email = forms.EmailField(
+        max_length=254,
+        help_text='Required. Provide a valid email address.'
+    )
 
     class Meta:
         model = User
@@ -20,7 +25,7 @@ class SignUpForm(UserCreationForm):
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model = User 
+        model = User
         fields = ["first_name", "last_name", "email"]
 
 class UploadFileForm(forms.Form):
@@ -35,16 +40,14 @@ class ConsultForm(forms.ModelForm):
             ("NAD83", "NAD83"),
             ("WGS84", "WGS84"),
         )
-        datum = forms.ChoiceField(choices=DATUM_OPTS)    
-
-        attachments = MultiFileField(
-            min_num=0, 
-            max_num=3, 
-            max_file_size=1024*1024*5
+        datum = forms.ChoiceField(choices=DATUM_OPTS)
+        biop = forms.FileField(
+            label="Select a file",
+            help_text="5MB max."
         )
-
         fields = ("title", "summary", "location", "lat", "long", "datum",
-            "species", "area", "area_unit", "owner", "date_created", 
+            "species", "area", "area_unit", "biop",
+            "owner", "date_created",
             "date_modified")
         widgets = {
             "title": forms.TextInput(attrs={"placeholder": "Descriptive is better"}),
@@ -54,5 +57,3 @@ class ConsultForm(forms.ModelForm):
             "lat": forms.TextInput(attrs={"placeholder": "decimal degrees"}),
             "long": forms.TextInput(attrs={"placeholder": "decimal degrees"}),
         }
-
-

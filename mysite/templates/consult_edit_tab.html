@@ -13,7 +13,8 @@
           <li><a href="#2" data-toggle="tab">Location</a></li>
           <li><a href="#3" data-toggle="tab">Species</a></li>
           <li><a href="#4" data-toggle="tab">Area</a></li>
-          <li><a href="#5" data-toggle="tab">Metadata</a></li>
+          <li><a href="#5" data-toggle="tab">Attachments</a></li>
+          <li><a href="#6" data-toggle="tab">Metadata</a></li>
         </ul>
 
         <!-- CONTENTS -->
@@ -26,7 +27,8 @@
                 <span style="font-weight: 600">Title</span> {{ form.title }}
               </p>
               <p>
-                <span style="font-weight: 600">Project Summary</span> {{ form.summary }}
+                <span style="font-weight: 600">Project Summary</span>
+                  {{ form.summary }}
                 <br>
                 <div class="row">
                   <br>{{ form.media }}
@@ -58,9 +60,11 @@
 
           <! TAB 3 >
           <div class="tab-pane" id="3">
-            <p>
-              <span style="font-weight: 600">Species</span> {{ form.species }}
-            </p>
+            <div class="col-md-12">
+              <p>
+                <span style="font-weight: 600">Species</span> {{ form.species }}
+              </p>
+            </div>
           </div>
 
           <! TAB 4 >
@@ -76,7 +80,18 @@
               </p>
             </div>
           </div>
+
+          <! TAB 5 >
           <div class="tab-pane" id="5">
+            <div class="col-md-12">
+              <p>
+                <span style="font-weight: 600">Biological Opinion</span> {{ form.biop }}
+              </p>
+            </div>
+          </div>
+
+          <! TAB 6 >
+          <div class="tab-pane" id="6">
             <p>
               <span style="font-weight: 600">Owner</span> {{ form.owner }}
             </p>
@@ -87,6 +102,8 @@
               <span style="font-weight: 600">Date Modified</span> {{ form.date_modified }}
             </p>
           </div>
+
+
           <div class="row"><br></div>
           <div class="row" style="margin-left: 0">
             <div class="col-md-12">
